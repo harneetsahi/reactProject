@@ -7,6 +7,6 @@ import Greeting from "./Greeting.jsx"; // default import
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Greeting />
+    <App />
   </StrictMode>
 );

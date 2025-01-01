@@ -6,6 +6,8 @@ import "./App.css";
 function App() {
   const [count, setCount] = useState(0);
 
+  const animals = ["Lion", "Cow", "Snake", "Lizard"];
+
   return (
     <>
       {/* <div>
@@ -28,10 +30,37 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-      <h1>Hello World! </h1>
-      {/* edited code sa per the assignment in the odin project */}
+      <>
+        <h1> Rendering list elements: animals </h1>
+
+        <List animals={animals} />
+      </>
     </>
   );
+}
+
+function List(props) {
+  if (!props.animals) {
+    return <div>Loading...</div>;
+  }
+
+  if (props.animals.length === 0) {
+    return <div>The list is empty</div>;
+  }
+
+  return (
+    <ul>
+      {props.animals.map((animal) => {
+        return animal.startsWith("L") ? (
+          <ListItem key={animal} animal={animal} />
+        ) : null;
+      })}
+    </ul>
+  );
+}
+
+function ListItem(props) {
+  return <li>{props.animal}</li>;
 }
 
 export default App;
